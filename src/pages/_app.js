@@ -27,7 +27,7 @@ import { GlobalStyle } from '../assets/styles/global.style';
 const AppLayout = dynamic(() => import('../layouts/app-layout'));
 
 export default function ExtendedApp({ Component, pageProps }) {
-  const mobile = useMedia('(max-width: 580px)');
+  const mobile = useMedia('(width: 580px)');
   const tablet = useMedia('(max-width: 991px)');
   const desktop = useMedia('(min-width: 992px)');
 
@@ -43,24 +43,24 @@ const store = createStore(
 
 
   return (
-    <ThemeProvider theme={defaultTheme}>
        <Provider store={store}>
-          <AuthProvider>
-            <AppProvider>
-              <AppLayout>
-                <GlobalStyle />
-                <CartProvider>
+        <ThemeProvider theme={defaultTheme}>
+           <GlobalStyle />
+             <CartProvider>
+               <AppProvider>
+                <AuthProvider>
+                  <AppLayout>
                     <IntlProvider locale="en">
                         <Component 
                         {...pageProps}
                         deviceType={{ mobile, tablet, desktop }}
                         />
                     </IntlProvider>
-                </CartProvider>
-              </AppLayout>
+                  </AppLayout>
+                 </AuthProvider>
               </AppProvider>
-          </AuthProvider>
+          </CartProvider>
+        </ThemeProvider>
       </Provider>
-    </ThemeProvider>
   );
 }

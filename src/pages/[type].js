@@ -43,15 +43,15 @@ const HomeScreen = ({ deviceType }) => {
 
   const dispatch = useDispatch();
   const status = useSelector((state) => state.dataInfo.statusUpdate);
-
+console.log("okay");
   useEffect(() => {
-    scroll();
+    // scroll();
     axios.get(baseURL + '11')
       .then((res) => {
         setSidebar(res.data.sidebar.menu_item);
         dispatch(saveProduct(res.data.sametypeItem));
         setLoading(false);
-        setLoadData(false);
+        // setLoadData(false);
         dispatch(saveOrder(res.data.orderInfo));
         
         loadDataStatUp(res.data.sametypeItem);
@@ -85,7 +85,7 @@ const HomeScreen = ({ deviceType }) => {
       .then((res) => {
         dispatch(clickedProduct(res.data.sametypeItem));
         setLoading(false);
-        setLoadData(false);
+        // setLoadData(false);
       })
       .catch((error) => {
         console.log('Api call error');
@@ -97,7 +97,7 @@ const HomeScreen = ({ deviceType }) => {
       .then((res) => {
         dispatch(clickedProduct(res.data.subCategoriesItem));
         setLoading(false);
-        setLoadData(false);
+        // setLoadData(false);
       })
       .catch((error) => {
         console.log('Api call error');

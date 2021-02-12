@@ -36,6 +36,7 @@ const CartPopupStyle = createGlobalStyle`
 const CartPopUp = ({
   deviceType: { mobile, tablet, desktop },
 }) => {
+  console.log(mobile);
   const { isOpen, cartItemsCount, toggleCart, calculatePrice } = useCart();
   const handleModal = () => {
     openModal({
@@ -62,7 +63,7 @@ const CartPopUp = ({
 
   return (
     <>
-      {mobile ? (
+      {mobile === false && (
         <>
           <CartPopupStyle />
           <CartPopupButton
@@ -80,7 +81,7 @@ const CartPopUp = ({
             onClick={handleModal}
           />
         </>
-      ) : (
+      )}
         <>
           <CartSlidePopup 
           className={cartSliderClass}
@@ -105,7 +106,7 @@ const CartPopUp = ({
             onClick={toggleCart}
           />
         </>
-      )}
+      
     </>
   );
 };
