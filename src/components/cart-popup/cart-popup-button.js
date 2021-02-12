@@ -29,8 +29,7 @@ const CartPopupButton = ({
       {itemCount} {itemPostfix}
     </ItemCount>
     <PriceBox>
-      {/* {pricePrefix}
-      {price} */}
+      {pricePrefix}
       {parseFloat(`${price}`).toFixed(2)}
     </PriceBox>
   </CartPopupButtonStyled>
