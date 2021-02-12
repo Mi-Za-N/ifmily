@@ -10,15 +10,7 @@ import {
 } from './cart-popup.style';
 import { ShoppingBag } from '../../assets/icons/ShoppingBag';
 
-// type CartButtonProps = {
-//   style?: React.CSSProperties;
-//   itemCount?: number;
-//   itemPostfix?: any;
-//   price?: number;
-//   pricePrefix?: string;
-//   className?: string;
-//   onClick?: (e: any) => void;
-// };
+
 
 const CartPopupButton = ({
   itemCount,
@@ -39,7 +31,7 @@ const CartPopupButton = ({
     <PriceBox>
       {pricePrefix}
       {price}
-      {parseFloat(`${price}`).toFixed(2)}
+      {parseFloat(`${price}`)}
     </PriceBox>
   </CartPopupButtonStyled>
 );

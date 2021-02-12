@@ -77,7 +77,7 @@ const CartPopUp = ({
               )
             }
             price={calculatePrice()}
-            pricePrefix='$'
+            pricePrefix='৳'
             onClick={handleModal}
           />
         </>
