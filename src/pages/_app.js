@@ -27,7 +27,7 @@ import { GlobalStyle } from '../assets/styles/global.style';
 const AppLayout = dynamic(() => import('../layouts/app-layout'));
 
 export default function ExtendedApp({ Component, pageProps }) {
-  const mobile = useMedia('(width: 580px)');
+  const mobile = useMedia('(width: 50px)');
   const tablet = useMedia('(max-width: 991px)');
   const desktop = useMedia('(min-width: 992px)');
 
