@@ -55,7 +55,7 @@ function HomeScreen(deviceType) {
         setLoading(false);
       })
       .catch((error) => {
-        // alert('okhh');
+        alert('okhh');
         console.log('Api call error');
         setError(true)
       })

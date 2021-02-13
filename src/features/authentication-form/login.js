@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { useDispatch, useSelector} from "react-redux";
-import { isLogin } from "../../store/actions/webDataInfo";
+import Router from 'next/router';
 import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 import MaskedInput from 'react-text-mask';
-import { SEND_OTP_URL, REGISTER_CUSTOMER_URL, PLACE_ORDER_URL, API_KEY } from '../../common/baseUrl';
+import { SEND_OTP_URL, REGISTER_CUSTOMER_URL, API_KEY } from '../../common/baseUrl';
+import { useAppState, useAppDispatch } from "../../contexts/app/app.provider";
 
 import {
   Button,
@@ -15,15 +15,17 @@ import {
 } from './authentication-form.style';
 import {
   CheckoutInformation,
-  InformationBox} from '../../features/checkouts/checkout-two/checkout-two.style';
+  InformationBox
+} from '../../features/checkouts/checkout-two/checkout-two.style';
 
-import { FieldWrapper} from '../../components/address-card/address-card.style';
+import { FieldWrapper } from '../../components/address-card/address-card.style';
 import TextField from '../../components/forms/text-field';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { closeModal } from '@redq/reuse-modal';
 
 export default function SignInModal() {
-  const Login = useSelector((state) => state.dataInfo.isLogin);
+  const dispatch = useAppDispatch();
+  const Login = useAppState("isLogin");
 
   const [mobileNo, setMobileNo] = useState('');
   const [name, setName] = useState('');
@@ -31,22 +33,19 @@ export default function SignInModal() {
   const [otp, setOTP] = useState('');
   const [loading, setLoading] = useState(false);
   const [isValid, setIsValid] = useState(false);
-  // const [isLogin, setIsLogin] = useState(false);
   const [clickOnLogin, setClickOnLogin] = useState(false);
 
   const [tempOTP, setTempOTP] = useState('');
 
-
   useEffect(() => {
-    //localStorage.removeItem('user')
+    // setSubTotal(calculateSubTotalPrice());
     let CustInfo = JSON.parse(localStorage.getItem('user'));
     if (CustInfo !== null) {
       setName(CustInfo.name);
       setAddress(CustInfo.address);
       setMobileNo(CustInfo.mobile);
       setClickOnLogin(true);
-      // setIsLogin(true);
-      dispatch(isLogin(true));
+      dispatch({ type: 'IS_LOGIN', payload: true });
     }
   }, []);
 
@@ -66,8 +65,6 @@ export default function SignInModal() {
   };
 
   const handleLogin = (e) => {
-    // setIsLogin(true)
-    dispatch(isLogin(false));
     e.preventDefault();
 
     let RandomNumber = Math.floor(Math.random() * 8999 + 1000);
@@ -91,7 +88,7 @@ export default function SignInModal() {
   }
 
   const send_sms = (url, isConnectionAvailable) => {
-    console.log(url);
+    
     if (isConnectionAvailable) {
       setClickOnLogin(true);
       return fetch(url)
@@ -120,11 +117,10 @@ export default function SignInModal() {
         },
       ]);
     }
-  }
+  } 
 
-  const dispatch = useDispatch();
   const handleSubmit = () => {
-    dispatch(isLogin(true));
+    dispatch({ type: 'IS_LOGIN', payload: true });
     closeModal();
     const isConnectionAvailable = window.navigator.onLine;
     if (otp == tempOTP) {
@@ -197,7 +193,7 @@ export default function SignInModal() {
   };
 
 
-  //   const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   // const [isValid, setIsValid] = useState(false);
   // const [isLogin, setIsLogin] = useState(false);
   // const [clickOnLogin, setClickOnLogin] = useState(false);
@@ -236,11 +232,10 @@ export default function SignInModal() {
   //     closeModal();
   //   }
   // };
-
+console.log(clickOnLogin);
   return (
     <Wrapper>
       <Container>
-        
         <CheckoutInformation>
             {clickOnLogin === false ? (
               <InformationBox  >
@@ -342,11 +337,9 @@ export default function SignInModal() {
                       )}
 
                   </InformationBox>
-
                 </>
               )}
           </CheckoutInformation>
-
       </Container>
     </Wrapper>
   );
