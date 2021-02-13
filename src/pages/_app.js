@@ -1,12 +1,8 @@
 import dynamic from 'next/dynamic';
-import {IntlProvider} from 'react-intl';
-import { Provider } from "react-redux";
-import { createStore, combineReducers, compose, applyMiddleware } from "redux";
-import  webDataInfo  from "../store/reducers/webDataInfo";
+import { IntlProvider } from 'react-intl';
 import { ThemeProvider } from 'styled-components';
 import { defaultTheme } from '../site-settings/site-theme/default';
 import { AppProvider } from '../contexts/app/app.provider';
-import { AuthProvider } from '../contexts/auth/auth.provider';
 import { CartProvider } from '../contexts/cart/use-cart';
 import { useMedia } from '../utils/use-media';
 
@@ -27,40 +23,25 @@ import { GlobalStyle } from '../assets/styles/global.style';
 const AppLayout = dynamic(() => import('../layouts/app-layout'));
 
 export default function ExtendedApp({ Component, pageProps }) {
-  const mobile = useMedia('(width: 50px)');
+  const mobile = useMedia('(max-width: 580px)');
   const tablet = useMedia('(max-width: 991px)');
   const desktop = useMedia('(min-width: 992px)');
-
-const reducer = combineReducers({
-  dataInfo: webDataInfo,
-});
-const composeEnhancer =  compose;
-
-const store = createStore(
-  reducer,
-  composeEnhancer(applyMiddleware())
-);
-
-
+  
   return (
-       <Provider store={store}>
-        <ThemeProvider theme={defaultTheme}>
-           <GlobalStyle />
-             <CartProvider>
-               <AppProvider>
-                <AuthProvider>
-                  <AppLayout>
-                    <IntlProvider locale="en">
-                        <Component 
-                        {...pageProps}
-                        deviceType={{ mobile, tablet, desktop }}
-                        />
-                    </IntlProvider>
-                  </AppLayout>
-                 </AuthProvider>
-              </AppProvider>
-          </CartProvider>
-        </ThemeProvider>
-      </Provider>
+    <ThemeProvider theme={defaultTheme}>
+      <GlobalStyle />
+      <CartProvider>
+        <AppProvider>
+          <AppLayout>
+            <IntlProvider locale="en">
+              <Component
+                {...pageProps}
+                deviceType={{ mobile, tablet, desktop }}
+              />
+            </IntlProvider>
+          </AppLayout>
+        </AppProvider>
+      </CartProvider>
+    </ThemeProvider>
   );
 }
