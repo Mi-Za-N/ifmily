@@ -62,6 +62,69 @@ export const CounterBox = styled.div(
   })
 );
 
+export const StockOutBox = styled.div(
+  
+  css({
+    display: 'flex',
+    backgroundColor: 'primary.regular',
+    color: 'white',
+    fontSize: 'base',
+    fontWeight: 'bold',
+  }),
+  {
+     rotate: '90deg',
+    // borderRadius: 200,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    overflow: 'hidden',
+    flexShrink: 0,
+    '&:focus': {
+      outline: 'none',
+    },
+  },
+  // variant({
+  //   variants: {
+  //     horizontal: {
+  //       width: 95,
+  //       height: 36,
+  //     },
+  //     vertical: {
+  //       width: 30,
+  //       height: 90,
+  //       flexDirection: 'column-reverse',
+  //     },
+  //     lightHorizontal: {
+  //       width: 104,
+  //       height: 36,
+  //       backgroundColor: 'gray.200',
+  //       color: 'text.bold',
+  //     },
+  //     lightVertical: {
+  //       width: 30,
+  //       height: 90,
+  //       flexDirection: 'column-reverse',
+  //       backgroundColor: 'gray.200',
+  //       color: 'text.bold',
+  //     },
+  //     altHorizontal: {
+  //       width: 104,
+  //       height: 36,
+  //       borderRadius: '6px',
+  //     },
+  //     altVertical: {
+  //       width: 30,
+  //       height: 90,
+  //       borderRadius: '6px',
+  //     },
+  //     full: {
+  //       width: '100%',
+  //       height: 36,
+  //       borderRadius: '6px',
+  //     },
+  //   },
+  // })
+);
+
 export const CounterButton = styled.button(
   {
     border: 'none',

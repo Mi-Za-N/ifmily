@@ -11,7 +11,7 @@ import {
 
 import { Waypoint } from 'react-waypoint';
 import { Button } from '../button/button';
-import { useAppDispatch } from '../../contexts/app/app.provider';
+import { useAppState, useAppDispatch } from '../../contexts/app/app.provider';
 import Search from '../../features/search/search';
 const SpringModal = dynamic(
   () => import('../spring-modal/spring-modal')
@@ -25,6 +25,7 @@ const SpringModal = dynamic(
 
 export const MobileBanner = ({ type, intlTitleId }) => {
   const [isOpen, setOpen] = useState(false);
+  const isClickSearchButton = useAppState("isClickOnSearch");
 
   const dispatch = useAppDispatch();
   const setSticky = useCallback(() => dispatch({ type: 'SET_STICKY' }), [
@@ -48,6 +49,11 @@ export const MobileBanner = ({ type, intlTitleId }) => {
           >
             {type}
           </Button>
+          {isClickSearchButton ? (
+                <SearchWrapper>
+          <Search minimal={true} />
+        </SearchWrapper>
+              ): null}
       </Content>
     // {/* </Box> */}
   );

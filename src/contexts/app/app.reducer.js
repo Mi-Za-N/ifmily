@@ -12,6 +12,7 @@ export const initialState = {
   isSidebarSticky: true,
   isDrawerOpen: false,
   isModalOpen: false,
+  isClickOnSearch: false,
 };
 
 
@@ -99,6 +100,11 @@ export function appReducer(state, action) {
       return {
         ...state,
         isModalOpen: !state.isModalOpen,
+      };
+      case 'TOGGLE_SEARCH':
+      return {
+        ...state,
+        isClickOnSearch: !state.isClickOnSearch,
       };
     default: {
       throw new Error(`Unsupported action type at App Reducer`);

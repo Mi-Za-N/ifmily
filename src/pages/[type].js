@@ -29,6 +29,7 @@ import FurnitureImgTwo from '../assets/images/banner/furniture-banner-2.jpg';
 
 function HomeScreen(deviceType) { 
   const showProduct = useAppState("showProductInfo");
+  const isClickSearchButton = useAppState("isClickOnSearch");
   const mobile = useAppState("isMobile");
   const tablet = useAppState("isTablet");
   const desktop = useAppState("isDestop");
@@ -116,7 +117,9 @@ function HomeScreen(deviceType) {
               />
             </SidebarSection>
             <ContentSection>
-              <Banner data={bannerSlides} />
+              {!isClickSearchButton ? (
+                <Banner data={bannerSlides} />
+              ): null}
               <div ref={targetRef}>
                 {loading ? (
                   <div> loading.....</div>

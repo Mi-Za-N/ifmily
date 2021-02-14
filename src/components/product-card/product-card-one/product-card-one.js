@@ -12,6 +12,7 @@ import {
 } from '../product-card.style';
 import { useCart } from '../../../contexts/cart/use-cart';
 import { Counter } from '../../counter/counter';
+
 import { cartAnimation } from '../../../utils/cart-animation';
 import { FormattedMessage } from 'react-intl';
 import { CartIcon } from '../../../assets/icons/CartIcon';
@@ -20,6 +21,8 @@ import { useRouter } from 'next/router';
 const QuickViewMobile = dynamic(
   () => import('../../../features/quick-view/quick-view-mobile')
 );
+import Logo from '../../../layouts/logo/logo';
+import LogoImage from '../../../assets/images/out.jpeg';
 
 const ProductCard = ({
   title,
@@ -159,15 +162,10 @@ const ProductCard = ({
           )}
           </>
           ) : (
-             <Button
-              className="card-counter"
-              variant="secondary"
-              borderRadius={100}
-            >
-              <ButtonText>
-                <FormattedMessage id="addCartButton" defaultMessage="Out of Stock" />
-              </ButtonText>
-            </Button>
+              <Logo
+               imageUrl={LogoImage}
+               alt={'out Stock'}
+             />
           )}
           
         </div>

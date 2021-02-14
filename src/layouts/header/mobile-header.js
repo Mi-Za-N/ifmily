@@ -20,6 +20,7 @@ import Logo from '../../layouts/logo/logo';
 // import LanguageSwitcher from './menu/language-switcher/language-switcher';
 import { isCategoryPage } from '../is-home-page';
 import useDimensions from '../../utils/useComponentSize';
+import { useAppState, useAppDispatch } from "../../contexts/app/app.provider"
 
 
 const SearchModal = () => {
@@ -45,20 +46,32 @@ const MobileHeader = ({ className }) => {
 
   const [mobileHeaderRef, dimensions] = useDimensions();
 
+  
+
+    const dispatch = useAppDispatch();
+
+    const toggleSearchBox = React.useCallback(() => {
+      dispatch({
+        type: "TOGGLE_SEARCH"
+      });
+    },[dispatch]);
+
   const handleSearchModal = () => {
-    openModal({
-      show: true,
-      config: {
-        enableResizing: false,
-        disableDragging: true,
-        className: 'search-modal-mobile',
-        width: '100%',
-        height: '100%',
-      },
-      closeOnClickOutside: false,
-      component: SearchModal,
-      closeComponent: () => <div />,
-    });
+    alert("okay")
+    
+    // openModal({
+    //   show: true,
+    //   config: {
+    //     enableResizing: false,
+    //     disableDragging: true,
+    //     className: 'search-modal-mobile',
+    //     width: '100%',
+    //     height: '100%',
+    //   },
+    //   closeOnClickOutside: false,
+    //   component: SearchModal,
+    //   closeComponent: () => <div />,
+    // });
   };
   const type = pathname === '/restaurant' ? 'restaurant' : query.type;
 
@@ -79,7 +92,7 @@ const MobileHeader = ({ className }) => {
 
         {isHomePage ? (
           <SearchWrapper
-            onClick={handleSearchModal}
+            onClick={toggleSearchBox}
             className='searchIconWrapper'
           >
             <SearchIcon />
