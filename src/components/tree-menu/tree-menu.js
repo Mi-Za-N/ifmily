@@ -6,6 +6,7 @@ import { Button } from '../../components/button/button';
 import Image from '../../components/image/image';
 import { ArrowNext } from '../../assets/icons/ArrowNext';
 import * as icons from '../../assets/icons/category-icons';
+import { get } from 'js-cookie';
 
 const Tree = React.memo(
   ({
@@ -87,8 +88,29 @@ export const TreeMenu = ({
   data,
   className,
   onClick,
-  active,
+  // active,
 }) => {
+  // console.log(data);
+  const [active, setActive] = useState(0);
+  const [isClicked, setIsClicked] = useState(0);
+  const getTypeId = (id, type) => {
+    if(type == "productType") {
+      setActive(id);
+    }else {
+       data.map((typeInfo) => {
+      typeInfo.sub_menu.map((subtypeInfo) => {
+        if(subtypeInfo.subtype_id == id) {
+          // console.log(subtypeInfo.type_id);
+          setActive(subtypeInfo.type_id);
+          setIsClicked(subtypeInfo.subtype_id);
+        }
+    });
+      
+    });
+    };
+   
+   
+  }
   const handler = (children) => {
     return children.map((subOption) => {
       // console.log(subOption);
@@ -99,8 +121,8 @@ export const TreeMenu = ({
             name={subOption.subproduct_type}
             icon={subOption.icon}
             depth="child"
-            onClick={() => onClick(subOption.subtype_id , 'subtype')}
-            defaultOpen={active === subOption.subtype_id}
+            onClick={() => {getTypeId(subOption.subtype_id , 'subtype'); onClick(subOption.subtype_id , 'subtype');}}
+            defaultOpen={isClicked === subOption.subtype_id}
           />
         );
       }
@@ -112,7 +134,7 @@ export const TreeMenu = ({
           icon={subOption.type_icon}
           dropdown={!subOption.sub_menu.length ? false : true}
           depth="parent"
-          onClick={() => onClick(subOption.type_id, 'productType')}
+          onClick={() => {getTypeId(subOption.type_id, 'productType'); onClick(subOption.type_id, 'productType');}}
           defaultOpen={
             active === subOption.type_id ||
             subOption.sub_menu.some((item) => item.type_id === active)

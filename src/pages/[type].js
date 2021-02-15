@@ -5,7 +5,8 @@ import { useRefScroll } from '../utils/use-ref-scroll';
 import dynamic from 'next/dynamic';
 import { MobileBanner } from '../components/banner/mobile-banner';
 import { Modal } from '@redq/reuse-modal';
-import { useAppState, useAppDispatch } from "../contexts/app/app.provider"
+import { useAppState, useAppDispatch } from "../contexts/app/app.provider";
+import Footer from "../layouts/footer";
 import { useRouter } from 'next/router';
 import {
   MainContentArea,
@@ -140,9 +141,11 @@ function HomeScreen(deviceType) {
               </div>
             </ContentSection>
           </MainContentArea>
+          {/* <Footer /> */}
           <CartPopUp deviceType={{ mobile, tablet, desktop }} />
         </Modal>
       </ModalProvider>
+      
     </>
   );
 };

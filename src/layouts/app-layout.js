@@ -38,7 +38,7 @@ const Layout = ({
         <Header />
       </Sticky>
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </LayoutWrapper>
   );
 };

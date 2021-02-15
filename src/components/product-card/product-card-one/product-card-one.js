@@ -22,7 +22,7 @@ const QuickViewMobile = dynamic(
   () => import('../../../features/quick-view/quick-view-mobile')
 );
 import Logo from '../../../layouts/logo/logo';
-import LogoImage from '../../../assets/images/out.jpeg';
+import LogoImage from '../../../assets/images/Stock-Out-1.png';
 
 const ProductCard = ({
   title,

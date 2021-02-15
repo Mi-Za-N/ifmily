@@ -25,12 +25,17 @@ const Box = styled.div(
 const Footer = () => {
   return (
     <Box>
-      <h3>PickBazar is a product of</h3>
+      <h3>PickBazar </h3>&nbsp;&nbsp;&nbsp;&nbsp;
+      <h3>PickBazar </h3>&nbsp;&nbsp;&nbsp;&nbsp;
+      <h3>PickBazar </h3>&nbsp;&nbsp;&nbsp;&nbsp;
+      <h3>PickBazar </h3>&nbsp;&nbsp;&nbsp;&nbsp;
+      <h3>PickBazar </h3>&nbsp;&nbsp;&nbsp;&nbsp;
+
       {/* <FormattedMessage
         id='siteFooter'
-        defaultMessage='PickBazar is a product of'
+        defaultMessage='PickBazar '
       /> */}
-      &nbsp;
+      
       <a href='#' target='_blank'>
         RedQ, Inc.
       </a>
