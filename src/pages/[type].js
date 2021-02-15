@@ -25,7 +25,7 @@ const Product = dynamic(() =>
 const CartPopUp = dynamic(() => import('../features/carts/cart-popup'));
 
 import { Banner } from '../components/banner/banner-two';
-import FurnitureImgOne from '../assets/images/banner/furniture-banner-1.jpg';
+import FurnitureImgOne from '../assets/images/banner/Web-Banner-1-New.jpg';
 import FurnitureImgTwo from '../assets/images/banner/furniture-banner-2.jpg';
 
 function HomeScreen(deviceType) { 
