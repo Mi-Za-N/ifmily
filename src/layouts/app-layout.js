@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import Sticky from 'react-stickynode';
 import { useAppState } from '../contexts/app/app.provider';
 import Header from './header/header';
-import Footer from "./footer"
 import { LayoutWrapper } from './layout.style';
 import { isCategoryPage } from './is-home-page';
 const MobileHeader = dynamic(() => import('./header/mobile-header'), {
@@ -30,15 +29,14 @@ const Layout = ({
     <LayoutWrapper className={`layoutWrapper ${className}`}>
       <Sticky enabled={isSticky} innerZ={1001}>
         <MobileHeader
-          className={`${isSticky ? 'sticky' : 'unSticky'} ${
-            isHomePage ? 'home' : ''
-          } desktop`}
+          // className={`${isSticky ? 'sticky' : 'unSticky'} ${
+          //   isHomePage ? 'home' : ''
+          // } desktop`}
         />
 
         <Header />
       </Sticky>
       {children}
-      {/* <Footer /> */}
     </LayoutWrapper>
   );
 };

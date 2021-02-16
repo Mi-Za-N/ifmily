@@ -17,10 +17,9 @@ import LogoImage from '../../assets/images/Logo-For-Web-Kmart24-218by36.png';
 import { SearchIcon } from '../../assets/icons/SearchIcon';
 import { LongArrowLeft } from '../../assets/icons/LongArrowLeft';
 import Logo from '../../layouts/logo/logo';
-// import LanguageSwitcher from './menu/language-switcher/language-switcher';
 import { isCategoryPage } from '../is-home-page';
 import useDimensions from '../../utils/useComponentSize';
-import { useAppState, useAppDispatch } from "../../contexts/app/app.provider"
+import { useAppState, useAppDispatch } from "../../contexts/app/app.provider";
 
 
 const SearchModal = () => {
