@@ -24,16 +24,10 @@ const Layout = ({
     pathname === '/furniture-two' ||
     pathname === '/grocery-two';
 
-  const isHomePage = isCategoryPage(query.type) || pathname === '/bakery';
   return (
     <LayoutWrapper className={`layoutWrapper ${className}`}>
       <Sticky enabled={isSticky} innerZ={1001}>
-        <MobileHeader
-          // className={`${isSticky ? 'sticky' : 'unSticky'} ${
-          //   isHomePage ? 'home' : ''
-          // } desktop`}
-        />
-
+        <MobileHeader />
         <Header />
       </Sticky>
       {children}

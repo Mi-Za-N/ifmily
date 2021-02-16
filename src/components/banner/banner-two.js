@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { SliderNav } from './banner.style';
 import { ArrowNext } from '../../assets/icons/ArrowNext';
 import { ArrowPrev } from '../../assets/icons/ArrowPrev';
-import styled from 'styled-components';
+import styled from 'styled-components'; 
 
 
 SwiperCore.use([Navigation]);

@@ -13,12 +13,6 @@ import { Waypoint } from 'react-waypoint';
 import { useAppDispatch } from '../../contexts/app/app.provider';
 import Search from '../../features/search/search';
 
-// interface Props {
-//   style?: any;
-//   imageUrl: string;
-//   intlTitleId: string;
-//   intlDescriptionId: string;
-// }
 
 export const Banner = ({
   style,
