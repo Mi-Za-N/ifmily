@@ -21,7 +21,7 @@ import { useRouter } from 'next/router';
 const QuickViewMobile = dynamic(
   () => import('../../../features/quick-view/quick-view-mobile')
 );
-import Logo from '../../../layouts/logo/logo';
+import StockOut from '../../../layouts/stockOut/StockOut';
 import LogoImage from '../../../assets/images/Stock-Out-1.png';
 
 const ProductCard = ({
@@ -162,14 +162,14 @@ const ProductCard = ({
           )}
           </>
           ) : (
-              <Logo
+              <StockOut
                imageUrl={LogoImage}
                alt={'out Stock'}
              />
           )}
           
         </div>
-      </ProductInfo>
+      </ProductInfo> 
     </ProductCardWrapper>
   );
 };

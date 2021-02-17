@@ -22,11 +22,10 @@ const Product = dynamic(() =>
   import('../components/product-grid/product-list/product-list')
 );
 const CartPopUp = dynamic(() => import('../features/carts/cart-popup'));
-
-import { Banner } from '../components/banner/banner-two';
 import FurnitureImgOne from '../assets/images/banner/Web-Banner-1-New.jpg';
 import FurnitureImgTwo from '../assets/images/banner/furniture-banner-2.jpg';
 import AppSlider from "../components/slider/AppSlider";
+import Footer from "../layouts/footer";
 
 function HomeScreen(deviceType) { 
   const showProduct = useAppState("showProductInfo");
@@ -119,7 +118,6 @@ function HomeScreen(deviceType) {
             </SidebarSection>
             <ContentSection>
               {!isClickSearchButton ? (
-                // <Banner data={bannerSlides} />
                 <AppSlider />
               ): null}
               <div ref={targetRef}>
@@ -140,6 +138,7 @@ function HomeScreen(deviceType) {
                         </div>
                       )}
               </div>
+              <Footer />
             </ContentSection>
           </MainContentArea>
           <CartPopUp deviceType={{ mobile, tablet, desktop }} />

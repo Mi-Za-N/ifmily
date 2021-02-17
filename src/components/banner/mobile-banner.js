@@ -49,10 +49,14 @@ export const MobileBanner = ({ type, intlTitleId }) => {
           >
             {type}
           </Button>
+          
           {isClickSearchButton ? (
-                <SearchWrapper>
+            <>
+            <br />
+         <SearchWrapper>
           <Search minimal={true} />
         </SearchWrapper>
+              </>
               ): null}
       </Content>
     // {/* </Box> */}

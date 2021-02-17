@@ -21,6 +21,7 @@ const SpringModal = ({
   const dispatch = useAppDispatch();
   const toggleHandler = () => {
     dispatch({ type: 'IS_SIDEBAR_OPEN', payload: '0' });
+    onRequestClose();
   };
 
 

@@ -5,10 +5,17 @@ import Slide from './Slide'
 import Arrow from './Arrow'
 import Dots from './Dots'
 
-const getWidth = () => 1000
+
+  
 
 
 const Slider = props => {
+    const [width, setWidth] = React.useState(0);
+    React.useEffect(() => {
+      setWidth(window.innerWidth);
+    });
+   
+
   const { slides } = props
 
   const firstSlide = slides[0]
@@ -17,8 +24,8 @@ const Slider = props => {
 
   const [state, setState] = useState({
     activeSlide: 0,
-    translate: getWidth(),
-    transition: 0.45,
+    translate: width,
+    transition: 0.55,
     _slides: [lastSlide, firstSlide, secondSlide]
   })
 
@@ -70,14 +77,14 @@ const Slider = props => {
       ...state,
       _slides,
       transition: 0,
-      translate: getWidth()
+      translate: width
     })
   }
 
   const nextSlide = () =>
     setState({
       ...state,
-      translate: translate + getWidth(),
+      translate: translate + width,
       activeSlide: activeSlide === slides.length - 1 ? 0 : activeSlide + 1
     })
 
@@ -93,10 +100,10 @@ const Slider = props => {
       <SliderContent
         translate={translate}
         transition={transition}
-        width={getWidth() * _slides.length}
+        width={width * _slides.length}
       >
         {_slides.map((_slide, i) => (
-          <Slide width={getWidth()} key={_slide + i} content={_slide} />
+          <Slide width={width} key={_slide + i} content={_slide} />
         ))}
       </SliderContent>
 
@@ -119,10 +126,6 @@ const SliderCSS = css`
   margin: 0 auto;
   overflow: hidden;
   white-space: nowrap;
-
-  '@media (max-width: 575px)': {
-    width:  100vw;
-  },
 `
 
 export default Slider
