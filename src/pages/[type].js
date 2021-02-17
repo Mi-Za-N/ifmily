@@ -6,7 +6,6 @@ import dynamic from 'next/dynamic';
 import { MobileBanner } from '../components/banner/mobile-banner';
 import { Modal } from '@redq/reuse-modal';
 import { useAppState, useAppDispatch } from "../contexts/app/app.provider";
-import { useRouter } from 'next/router';
 import {
   MainContentArea,
   SidebarSection,
@@ -22,10 +21,11 @@ const Product = dynamic(() =>
   import('../components/product-grid/product-list/product-list')
 );
 const CartPopUp = dynamic(() => import('../features/carts/cart-popup'));
-import FurnitureImgOne from '../assets/images/banner/Web-Banner-1-New.jpg';
-import FurnitureImgTwo from '../assets/images/banner/furniture-banner-2.jpg';
 import AppSlider from "../components/slider/AppSlider";
 import Footer from "../layouts/footer";
+import NoResultFound from "../components/no-result/no-result";
+import Loading from "../components/loading/loading";
+import Error from "../components/error/error";
 
 function HomeScreen(deviceType) { 
   const showProduct = useAppState("showProductInfo");
@@ -79,17 +79,6 @@ function HomeScreen(deviceType) {
     window.scrollTo(0, 0);
   }
 
-  const bannerSlides = [
-    {
-      img: FurnitureImgOne,
-      alt: 'Slide One',
-    },
-    {
-      img: FurnitureImgTwo,
-      alt: 'Slide Two',
-    },
-  ];
-
   return (
     <>
       <ModalProvider>
@@ -122,11 +111,11 @@ function HomeScreen(deviceType) {
               ): null}
               <div ref={targetRef}>
                 {loading ? (
-                  <div> loading.....</div>
+                  <Loading />
                 ) : error ? (
-                  <div>an error occur</div>
+                  <Error />
                 ) : showProduct.length == 0 ? (
-                  <div>There is no products</div>
+                  <NoResultFound />
                 ) : (
                         <div ref={targetRef}>
                           <Product
