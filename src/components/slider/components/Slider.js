@@ -5,7 +5,7 @@ import Slide from './Slide'
 import Arrow from './Arrow'
 import Dots from './Dots'
 
-const getWidth = () => 660
+const getWidth = () => 1000
 
 
 const Slider = props => {
@@ -110,11 +110,19 @@ const Slider = props => {
 
 const SliderCSS = css`
   position: relative;
-  height: 40vh;
-  width:  70vw;
+  height: 50vh;
+  width:  75vw;
+  @media (max-width: 575px) {
+    width:  100vw;
+    height: 30vh;
+  }
   margin: 0 auto;
   overflow: hidden;
   white-space: nowrap;
+
+  '@media (max-width: 575px)': {
+    width:  100vw;
+  },
 `
 
 export default Slider

@@ -5,7 +5,7 @@ const Dot = ({ active }) => {
   return (
     <span
       className={css`
-        padding: 10px;
+        padding: 6px;
         margin-right: 5px;
         cursor: pointer;
         border-radius: 50%;
