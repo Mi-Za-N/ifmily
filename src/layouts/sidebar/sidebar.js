@@ -34,12 +34,12 @@ const SidebarCategory = ({
     <CategoryWrapper>
       <PopoverWrapper>
         <CategoryWalker>
-          <OrderWAuth />
-          {/* <TreeMenu
+          {/* <OrderWAuth /> */}
+          <TreeMenu
             data={sidebar}
             onClick={onCategoryClick}
             active={false}
-          /> */}
+          />
         </CategoryWalker>
       </PopoverWrapper>
 

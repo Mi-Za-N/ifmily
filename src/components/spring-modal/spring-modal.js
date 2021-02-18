@@ -38,7 +38,7 @@ const SpringModal = ({
     padding: '0',
     width: 'calc(100% + 1px)',
     height: '100%',
-    maxHeight: '70vh',
+    maxHeight: '80vh',
     backgroundColor: '#ffffff',
     borderRadius: '0px',
     borderTopLeftRadius: '20px',
