@@ -27,7 +27,9 @@ const Layout = ({
   return (
     <LayoutWrapper className={`layoutWrapper ${className}`}>
       <Sticky enabled={isSticky} innerZ={1001}>
-        <MobileHeader />
+        <MobileHeader 
+          className={`unSticky `}
+        />
         <Header />
       </Sticky>
       {children}
