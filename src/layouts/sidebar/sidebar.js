@@ -34,7 +34,7 @@ const SidebarCategory = ({
     <CategoryWrapper>
       <PopoverWrapper>
         <CategoryWalker>
-          {/* <OrderWAuth /> */}
+          <OrderWAuth />
           <TreeMenu
             data={sidebar}
             onClick={onCategoryClick}

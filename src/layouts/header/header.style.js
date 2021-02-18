@@ -556,8 +556,8 @@ export const UserOptionMenu = styled.div`
 `;
 
 export const SearchModalWrapper = styled.div`
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   background-color: ${themeGet('colors.white', '#ffffff')};
   display: flex;
   width: 100%;

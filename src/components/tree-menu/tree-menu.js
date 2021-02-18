@@ -3,10 +3,8 @@ import { usePrevious, useMeasure } from '../../utils/hooks';
 import { useSpring, animated } from 'react-spring';
 import { Frame, Title, Content, Header, IconWrapper } from './tree-menu.style';
 import { Button } from '../../components/button/button';
-import Image from '../../components/image/image';
 import { ArrowNext } from '../../assets/icons/ArrowNext';
 import * as icons from '../../assets/icons/category-icons';
-import { get } from 'js-cookie';
 
 const Tree = React.memo(
   ({
@@ -34,16 +32,6 @@ const Tree = React.memo(
         transform: `translate3d(${isOpen ? 0 : 20}px,0,0)`,
       },
     });
-    // const Icon = icon ? Icons[icon] : depth === 'child' ? Icons['Minus'] : null;
-    // const Icon = icon ? Icons[icon] : null;
-    const Icon = ({ iconName, style }) => {
-      const TagName = icons[iconName];
-      return !!TagName ? (
-        <TagName style={style} />
-      ) : (
-        <p>Invalid icon {iconName}</p>
-      );
-    };
     return (
       <Frame depth={depth}>
         <Header open={isOpen} depth={depth} className={depth}>
