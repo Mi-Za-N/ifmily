@@ -52,10 +52,10 @@ export const SearchBox = ({
             name={name}
             {...rest}
           />
-          <StyledSearchButton>
+          {/* <StyledSearchButton> */}
             <SearchIcon style={{ marginRight: 10 }} />
             {showButtonText && buttonText}
-          </StyledSearchButton>
+          {/* </StyledSearchButton> */}
         </>
       )}
     </StyledForm>

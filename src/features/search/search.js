@@ -28,17 +28,10 @@ const dispatch = useAppDispatch();
   };
 
     
-  const onSearch = (e) => {
-    e.preventDefault();
-    
-    // dispatch({ type: 'SET_SEARCH_TERM', payload: '' });
-    // if (onSubmit) {
-    //   onSubmit();
-    // }
-  };
+ 
   return (
     <SearchBox
-      onEnter={onSearch}
+      // onEnter={onSearch}
       onChange={handleOnChange}
       // value={searchTerm}
       name="search"

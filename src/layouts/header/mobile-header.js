@@ -15,12 +15,10 @@ import Search from '../../features/search/search';
 import LogoImage from '../../assets/images/Logo-For-Web-Kmart24-218by36.png';
 
 import { SearchIcon } from '../../assets/icons/SearchIcon';
-import { LongArrowLeft } from '../../assets/icons/LongArrowLeft';
+import { CloseIcon } from '../../assets/icons/CloseIcon';
 import Logo from '../../layouts/logo/logo';
 import { isCategoryPage } from '../is-home-page';
 import useDimensions from '../../utils/useComponentSize';
-import { useAppState, useAppDispatch } from "../../contexts/app/app.provider";
-
 
 
 const SearchModal = () => {
@@ -30,7 +28,7 @@ const SearchModal = () => {
   return (
     <SearchModalWrapper>
       <SearchModalClose type='submit' onClick={() => closeModal()}>
-        <LongArrowLeft />
+        <CloseIcon />
       </SearchModalClose>
       <Search
         className='header-modal-search'
