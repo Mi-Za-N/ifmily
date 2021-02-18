@@ -40,12 +40,11 @@ const MobileDrawer = () => {
   <Drawer
       width='316px'
       drawerHandler={
-        <div>
-          {/* <span />
+        <HamburgerIcon>
           <span />
-          <span /> */}
-          &#9776;
-        </div>
+          <span />
+          <span />
+        </HamburgerIcon>
       }
       open={isDrawerOpen}
       toggleHandler={toggleHandler}
