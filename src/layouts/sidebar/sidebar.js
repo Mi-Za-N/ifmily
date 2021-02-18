@@ -20,7 +20,7 @@ import { TreeMenu } from '../../components/tree-menu/tree-menu';
 const SidebarCategory = ({
   sidebar,
   clickOnCategory,
-  // deviceType: { mobile, tablet, desktop },
+  deviceType,
   type,
 }) => {
   // console.log(data);
@@ -39,6 +39,7 @@ const SidebarCategory = ({
             data={sidebar}
             onClick={onCategoryClick}
             active={false}
+            deviceType={deviceType}
           />
         </CategoryWalker>
       </PopoverWrapper>
@@ -51,6 +52,7 @@ const SidebarCategory = ({
                 data={sidebar}
                 onClick={onCategoryClick}
                 active={false}
+                deviceType={deviceType}
                 
               />
             </TreeWrapper>

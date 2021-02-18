@@ -43,7 +43,7 @@ const ProductCard = ({
   deviceType,
   ...props
 }) => {
-  // console.log(data);
+  
   const router = useRouter();
   const [showModal, hideModal] = useModal(
     () => (

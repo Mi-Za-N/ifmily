@@ -25,14 +25,7 @@ export const Products = ({
   productList,
   ...props
 }) => {
-  // const handleLoadMore = () => {
-  //   fetchMore({
-  //     variables: {
-  //       offset: Number(data.products.items.length),
-  //       limit: fetchLimit,
-  //     },
-  //   });
-  // };
+  
     const renderCard = (product) => {
         return (
           <GeneralCard

@@ -17,7 +17,9 @@ const Tree = React.memo(
     onToggleBtnClick,
     depth,
     defaultOpen = false,
+    deviceType
   }) => {
+    
     const [isOpen, setOpen] = useState(defaultOpen);
     useEffect(() => {
       setOpen(defaultOpen);
@@ -35,7 +37,9 @@ const Tree = React.memo(
     return (
       <Frame depth={depth}>
         <Header open={isOpen} depth={depth} className={depth}>
-        {depth === "parent" ? (
+          {deviceType ? null : (
+            <>
+            {depth === "parent" ? (
           <IconWrapper depth={depth}>
               <img  src={"https://www.ifamilymart.com.bd/ifm/assets/product_image/banner/" + icon} />
             </IconWrapper>
@@ -43,6 +47,9 @@ const Tree = React.memo(
           <IconWrapper depth={depth}>
             </IconWrapper>
         )}
+            </>
+          )}
+        
             
         
           <Title onClick={onClick}>{name}</Title>
@@ -77,8 +84,8 @@ export const TreeMenu = ({
   className,
   onClick,
   // active,
+  deviceType: { mobile, tablet, desktop },
 }) => {
-  // console.log(data);
   const [active, setActive] = useState(0);
   const [isClicked, setIsClicked] = useState(0);
   const getTypeId = (id, type) => {
@@ -111,6 +118,7 @@ export const TreeMenu = ({
             depth="child"
             onClick={() => {getTypeId(subOption.subtype_id , 'subtype'); onClick(subOption.subtype_id , 'subtype');}}
             defaultOpen={isClicked === subOption.subtype_id}
+            // deviceType={deviceType}
           />
         );
       }
@@ -127,6 +135,7 @@ export const TreeMenu = ({
             active === subOption.type_id ||
             subOption.sub_menu.some((item) => item.type_id === active)
           }
+          deviceType={mobile}
         >
           {handler(subOption.sub_menu)}
         </Tree>
