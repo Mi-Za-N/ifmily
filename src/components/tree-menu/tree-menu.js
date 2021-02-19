@@ -5,6 +5,7 @@ import { Frame, Title, Content, Header, IconWrapper } from './tree-menu.style';
 import { Button } from '../../components/button/button';
 import { ArrowNext } from '../../assets/icons/ArrowNext';
 import * as icons from '../../assets/icons/category-icons';
+import { IMAGE_URL } from "../../common/baseUrl";
 
 const Tree = React.memo(
   ({
@@ -17,7 +18,7 @@ const Tree = React.memo(
     onToggleBtnClick,
     depth,
     defaultOpen = false,
-    deviceType
+   
   }) => {
     
     const [isOpen, setOpen] = useState(defaultOpen);
@@ -37,21 +38,14 @@ const Tree = React.memo(
     return (
       <Frame depth={depth}>
         <Header open={isOpen} depth={depth} className={depth}>
-          {deviceType ? null : (
-            <>
-            {depth === "parent" ? (
-          <IconWrapper depth={depth}>
-              <img  src={"https://www.ifamilymart.com.bd/ifm/assets/product_image/banner/" + icon} />
-            </IconWrapper>
-        ): (
-          <IconWrapper depth={depth}>
-            </IconWrapper>
-        )}
-            </>
-          )}
-        
-            
-        
+        {depth === "parent" ? (
+              <IconWrapper depth={depth}>
+                  <img  src={IMAGE_URL + "banner/" + icon} />
+                </IconWrapper>
+            ): (
+              <IconWrapper depth={depth}>
+                </IconWrapper>
+            )}
           <Title onClick={onClick}>{name}</Title>
 
           {dropdown === true && (
@@ -84,7 +78,6 @@ export const TreeMenu = ({
   className,
   onClick,
   // active,
-  deviceType: { mobile, tablet, desktop },
 }) => {
   const [active, setActive] = useState(0);
   const [isClicked, setIsClicked] = useState(0);
@@ -118,7 +111,7 @@ export const TreeMenu = ({
             depth="child"
             onClick={() => {getTypeId(subOption.subtype_id , 'subtype'); onClick(subOption.subtype_id , 'subtype');}}
             defaultOpen={isClicked === subOption.subtype_id}
-            // deviceType={deviceType}
+            
           />
         );
       }
@@ -135,7 +128,7 @@ export const TreeMenu = ({
             active === subOption.type_id ||
             subOption.sub_menu.some((item) => item.type_id === active)
           }
-          deviceType={mobile}
+         
         >
           {handler(subOption.sub_menu)}
         </Tree>

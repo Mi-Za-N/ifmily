@@ -53,6 +53,7 @@ function HomeScreen(deviceType) {
       .then((res) => {
         setSidebar(res.data.menu_item);
         dispatch({ type: 'SAVE_PRODUCT_INFO', payload: res.data.allProductInfo });
+        dispatch({ type: 'SAVE_SIDEBAR_DATA', payload: res.data.menu_item });
         setLoading(false);
       })
       .catch((error) => {

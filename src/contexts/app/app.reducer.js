@@ -2,6 +2,7 @@ export const initialState = {
   searchTerm: '',
   allProductInfo: [],
   showProductInfo: [],
+  sidebarData: [],
   orderInfo: [],
   isSidebarOpen: "0",
   isMobile: false,
@@ -25,6 +26,11 @@ export function appReducer(state, action) {
         ...state,
         allProductInfo: action.payload,
         showProductInfo: action.payload.filter(sp => sp.is_special_offer === '1'),
+      };
+      case 'SAVE_SIDEBAR_DATA':
+      return {
+        ...state,
+        sidebarData: action.payload,
       };
     case 'SAME_TYPE_PRODUCT_INFO':
       return {

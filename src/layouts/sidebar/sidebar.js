@@ -32,7 +32,7 @@ const SidebarCategory = ({
   // }
   return (
     <CategoryWrapper>
-      <PopoverWrapper>
+      {/* <PopoverWrapper>
         <CategoryWalker>
           <OrderWAuth />
           <TreeMenu
@@ -42,7 +42,7 @@ const SidebarCategory = ({
             deviceType={deviceType}
           />
         </CategoryWalker>
-      </PopoverWrapper>
+      </PopoverWrapper> */}
 
       <SidebarWrapper style={{ paddingTop: type === 'medicine' ? 0 : 50 }}>
         <Sticky enabled={isSidebarSticky} top={type === 'medicine' ? 89 : 110}>
