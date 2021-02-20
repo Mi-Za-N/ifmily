@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { baseURL, subTypeURL } from "../common/baseUrl";
+import { baseURL, IMAGE_URL } from "../common/baseUrl";
 import axios from 'axios';
 import { useRefScroll } from '../utils/use-ref-scroll';
 import dynamic from 'next/dynamic';
@@ -36,6 +36,7 @@ function HomeScreen(deviceType) {
   const [sidebarItem, setSidebar] = useState([]);
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
+  const [ slider, setSlider ] = useState([]);
   const { elRef: targetRef, scroll } = useRefScroll({
     percentOfElement: 0,
     percentOfContainer: 0,
@@ -51,6 +52,8 @@ function HomeScreen(deviceType) {
     dispatch({ type: 'IS_DESKTOP', payload: deviceType.deviceType.desktop });
     axios.get(baseURL)
       .then((res) => {
+        // console.log(res.data.desktopSliderInfo);
+        setSlider(res.data.desktopSliderInfo);
         setSidebar(res.data.menu_item);
         dispatch({ type: 'SAVE_PRODUCT_INFO', payload: res.data.allProductInfo });
         dispatch({ type: 'SAVE_SIDEBAR_DATA', payload: res.data.menu_item });
@@ -107,8 +110,8 @@ function HomeScreen(deviceType) {
               />
             </SidebarSection>
             <ContentSection>
-              {!isClickSearchButton ? (
-                <AppSlider />
+              {!isClickSearchButton && slider.length > 0 ?  (
+                <AppSlider sliderImgs={slider} deviceType={{ mobile, tablet, desktop }} />
               ): null}
               <div ref={targetRef}>
                 {loading ? (

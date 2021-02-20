@@ -1,17 +1,74 @@
 import React from 'react';
 import Slider from './components/Slider';
+import { IMAGE_URL } from "../../common/baseUrl";
 
-const images = [
-  'https://images.unsplash.com/photo-1449034446853-66c86144b0ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80',
-  'https://images.unsplash.com/photo-1470341223622-1019832be824?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2288&q=80',
-  'https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2094&q=80',
-  'https://images.unsplash.com/photo-1534161308652-fdfcf10f62c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2174&q=80'
+
+
+const AppSlider = ({ sliderImgs, deviceType: { mobile, tablet, desktop }}) => {
+  const sliders = [
+    IMAGE_URL + 'slider/' + sliderImgs[0].slider_pic,
+    IMAGE_URL + 'slider/' + sliderImgs[1].slider_pic,
+    IMAGE_URL + 'slider/' + sliderImgs[2].slider_pic,
+    IMAGE_URL + 'slider/' + sliderImgs[3].slider_pic,
 ]
-
-const AppSlider = ({ }) => {
   return (
-     <Slider slides={images} autoPlay={2} />
+     <Slider deviceType={mobile} slides={sliders} autoPlay={2} />
   );
 };
 
 export default AppSlider;
+
+
+// import React from "react";
+// import AliceCarousel from 'react-alice-carousel';
+// import "react-alice-carousel/lib/alice-carousel.css";
+// import {baseURL, IMAGE_URL } from "../../common/baseUrl";
+
+
+
+// // .sliderimg {
+// //   width: 100%;
+// //   height: 500px;
+// //   object-fit: cover;
+// // }
+
+// export default function App({sliderImgs}) {
+// //     const sliders = [
+// //     IMAGE_URL + 'slider/' + sliderImgs[0].slider_pic,
+// //     IMAGE_URL + 'slider/' + sliderImgs[1].slider_pic,
+// //     IMAGE_URL + 'slider/' + sliderImgs[2].slider_pic,
+// //     IMAGE_URL + 'slider/' + sliderImgs[3].slider_pic,
+// // ]
+//   return (
+//     <div className="App">
+//      <AliceCarousel autoPlay autoPlayInterval="1000">
+//       <img src={IMAGE_URL + 'slider/' + sliderImgs[0].slider_pic} className={{
+//         width: "100%", 
+//         height: "500px", 
+//         // object-fit: "cover",
+//         }} 
+//         alt=""/>
+//       <img src={IMAGE_URL + 'slider/' + sliderImgs[1].slider_pic} className={{
+//         width: "100%", 
+//         height: "500px", 
+//         // object-fit: "cover",
+//       }} alt=""/>
+//       <img src={IMAGE_URL + 'slider/' + sliderImgs[2].slider_pic} className={{
+//         width: "100%", 
+//         height: "500px", 
+//         // object-fit: "cover",
+//       }} alt=""/>
+//       <img src={IMAGE_URL + 'slider/' + sliderImgs[3].slider_pic} className={{
+//         width: "100%", 
+//         height: "500px", 
+//         // object-fit: "cover",
+//       }} alt=""/>
+//     </AliceCarousel>
+//     </div>
+//   );
+// }
+
+
+
+
+

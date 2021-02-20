@@ -1,22 +1,28 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { css } from '@emotion/css'
-import SliderContent from './SliderContent'
-import Slide from './Slide'
-import Arrow from './Arrow'
-import Dots from './Dots'
+import { css } from '@emotion/css';
+import SliderContent from './SliderContent';
+import Slide from './Slide';
+import Arrow from './Arrow';
+import Dots from './Dots';
 
 
   
 
 
 const Slider = props => {
+  const dv = props.deviceType;
     const [width, setWidth] = React.useState(0);
     React.useEffect(() => {
-      setWidth(window.innerWidth);
+      if(dv) {
+          setWidth(window.innerWidth);
+      } else {
+        setWidth(window.innerWidth - 200);
+      }
+      
     });
    
 
-  const { slides } = props
+  const { slides } = props;
 
   const firstSlide = slides[0]
   const secondSlide = slides[1]
